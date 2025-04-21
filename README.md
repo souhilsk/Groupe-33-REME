@@ -25,16 +25,16 @@ We aim to gather data from:
 Details on variables, transformations, and cleaning will be available in the `data/` and `scripts/` folders.
 
 ## 🗂️ Repository Structure
-📁 data/                 # Raw and cleaned datasets (.dta)
-📁 scripts/              # Stata .do files for analysis and graphs
-📁 output/               # Tables, regression results, and figures
-📄 report.tex            # Final research report (LaTeX format)
-📄 presentation/         # Slides for the oral presentation
-📄 README.md             # This file
+data/                 # Raw and cleaned datasets (.dta)
+scripts/              # Stata .do files for analysis and graphs
+output/               # Tables, regression results, and figures
+report.tex            # Final research report (LaTeX format)
+presentation/         # Slides for the oral presentation
+README.md             # This file
 
 ## 👥 Team
 
-This project is developed by students of the 2025 edition of the course *Recherche Empirique en Economie et Management*.
+This project is developed by 3rd year HEC Lausanne students of the Spring 2025 course *Recherche Empirique en Economie et Management*, under the supervision of Professors Rafael Lalive and Jérémy Zuchuat.
 
 **Team Members:**
 - Souhil Khiat
