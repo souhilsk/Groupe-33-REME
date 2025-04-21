@@ -25,12 +25,12 @@ We aim to gather data from:
 Details on variables, transformations, and cleaning will be available in the `data/` and `scripts/` folders.
 
 ## 🗂️ Repository Structure
-data/                 # Raw and cleaned datasets (.dta)
-scripts/              # Stata .do files for analysis and graphs
-output/               # Tables, regression results, and figures
-report.tex            # Final research report (LaTeX format)
-presentation/         # Slides for the oral presentation
-README.md             # This file
+data/
+scripts/
+output/
+report.tex
+presentation/
+README.md
 
 ## 👥 Team
 
