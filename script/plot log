@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+
+# Calculer la moyenne des log(crime_rate) par groupe et année
+mean_log_crime = df.groupby(['year', 'group'])['log_crime'].mean().unstack()
+
+# Tracer
+plt.figure(figsize=(10, 5))
+plt.plot(mean_log_crime.index, mean_log_crime['Swiss'], marker='o', label='Swiss')
+plt.plot(mean_log_crime.index, mean_log_crime['Foreigner'], marker='o', label='Foreigner')
+
+# Ligne verticale pour 2016
+plt.axvline(x=2016, color='red', linestyle='--', label='Policy Start (2016)')
+
+# Titres et légendes
+plt.title('Log(Crime Rate) Over Time by Group')
+plt.xlabel('Year')
+plt.ylabel('Log(Crime Rate per 100,000)')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
