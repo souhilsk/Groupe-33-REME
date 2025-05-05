@@ -8,7 +8,6 @@ This repository contains the materials, data, and code for our empirical researc
 
 This project investigates whether the Swiss federal initiative—approved in 2010 and implemented in 2016—targeting the automatic expulsion of foreign nationals convicted of certain crimes has had a measurable effect on crime rates among foreign populations in Switzerland.
 Link of the original initiative (2010) : https://www.bk.admin.ch/ch/f/pore/vi/vis357t.html
-Link of the implementation intitiative (2016): https://www.bk.admin.ch/ch/f/pore/vi/vis433t.html
 
 ## 🧠 Methodology
 
