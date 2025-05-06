@@ -170,3 +170,65 @@ output_file = "prevenus_nettoye_par_canton.xlsx"
 df_cleaned.to_excel(output_file, index=False)
 
 print(f"✅ Données nettoyées et sauvegardées dans : {output_file}")
+
+
+#all cantons and crimes concerned
+import pandas as pd
+import numpy as np
+
+# === 1. Charger le fichier brut ===
+file_path = '/Users/tommasospreij/Desktop/REME projet/Crime concerned by canton and residency status .xlsx'
+df_raw = pd.read_excel(file_path, sheet_name=0, header=None)
+
+# === 2. Extraire les années depuis la ligne 2 (index 2), à partir de la colonne 6 ===
+years = df_raw.iloc[2, 6:].tolist()
+
+# === 3. Préparer les lignes (chaque canton occupe 4 lignes) et les regrouper
+group_map = {
+    'suisses': 'Swiss',
+    'résidente': 'Foreigner',
+    'asile': 'Foreigner',
+    'autres': 'Foreigner'
+}
+
+records = []
+
+for i in range(3, df_raw.shape[0], 4):  # lecture par blocs de 4 lignes (1 canton)
+    try:
+        canton = df_raw.iloc[i, 3]  # colonne 4 (index 3)
+        if pd.isna(canton):
+            continue
+
+        for j in range(4):  # les 4 lignes de chaque canton (groupes)
+            row = df_raw.iloc[i + j]
+            label = str(row[5]).lower()  # colonne 6 (index 5) = groupe
+            for key in group_map:
+                if key in label:
+                    group = group_map[key]
+                    values = row[6:].values
+                    for k, year in enumerate(years):
+                        try:
+                            val = values[k]
+                            val = np.nan if str(val).strip() in ["*", "X", "x", ""] else float(val)
+                            records.append({
+                                "year": int(year),
+                                "canton": canton,
+                                "group": group,
+                                "count": val
+                            })
+                        except:
+                            continue
+                    break
+    except:
+        continue
+
+# === 4. Nettoyer et agréger les données ===
+df_cleaned = pd.DataFrame(records)
+df_cleaned = df_cleaned.dropna()
+df_cleaned = df_cleaned.groupby(["year", "canton", "group"], as_index=False).agg({"count": "sum"})
+
+# === 5. Exporter le fichier ===
+output_file = "prevenus_26cantons_clean.xlsx"
+df_cleaned.to_excel(output_file, index=False)
+
+print(f"✅ Données nettoyées et sauvegardées dans : {output_file}")
