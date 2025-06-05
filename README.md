@@ -1,24 +1,86 @@
 # Shock and No Shift: Impact of the Expulsion Initiative on Foreign Crime Rates in Switzerland
 
-> **Key Finding**: Our difference-in-differences analysis reveals no statistically significant impact of Switzerland's 2016 expulsion law on violent crime rates among foreign residents.
+**Authors:** Souhil Khiat, Simon Schmidt-Ginzkey, Martin Sinishta, Tommaso Spreij, Timon van Engen  
+**Affiliation:** HEC Lausanne, Faculty of Business & Economics, University of Lausanne  
+**Date:** June 2025
 
-## 🔍 Research Question
-**Did the implementation of Switzerland's 2016 expulsion law for foreign criminals reduce violent crime rates among foreign residents?** 
+---
 
-This project empirically evaluates the impact of the constitutional amendment (Art. 121) and Criminal Code Art. 66a implementation on foreign crime rates using canton-level data from 2010-2023.
+## Table of Contents
 
-## 📜 Key Publications
-- [Federal Constitution Amendment (Art. 121)](https://www.fedlex.admin.ch/eli/cc/1999/404/en#art_121)
-- [Criminal Code Art. 66a](https://www.fedlex.admin.ch/eli/cc/54/757_781_799/en#art_66a)
+1. [Project Overview](#project-overview)  
+2. [Repository Structure](#repository-structure)  
+3. [Data](#data)  
+   - [Raw Data](#raw-data)  
+   - [Processed Data](#processed-data)  
+4. [Scripts & Notebooks](#scripts--notebooks)  
+   - [01_data_cleaning.ipynb](#01_data_cleaningipynb)  
+   - [02_parallel_trends_test_comparison.ipynb](#02_parallel_trends_test_comparisonipynb)  
+   - [02_parallel_trends_test_comparison_alt.ipynb](#02_parallel_trends_test_comparison_altipynb)  
+   - [03_did_BC_optimal.ipynb](#03_did_bc_optimalipynb)  
+   - [03_did_linear.ipynb](#03_did_linearipynb)  
+   - [03_did_log.ipynb](#03_did_logipynb)  
+5. [Plots](#plots)  
+6. [Paper (LaTeX)](#paper-latex)  
+7. [How to Reproduce](#how-to-reproduce)  
+   - [Environment & Dependencies](#environment--dependencies)  
+   - [Step-by-Step Instructions](#step-by-step-instructions)  
+8. [Citation](#citation)  
 
-## 📊 Methodology
-We employ a **difference-in-differences (DiD)** design comparing foreign residents (treatment group) to Swiss nationals (control group) with multiple robustness checks:
+---
 
-```mermaid
-graph LR
-A[DiD Design] --> B[Fixed Effects]
-A --> C[Parallel Trends Validation]
-A --> D[Wild Cluster Bootstrap]
-A --> E[Placebo Tests]
-A --> F[Box-Cox Transformation]
-A --> G[Canton-level Heterogeneity Analysis]
+## Project Overview
+
+This repository contains all code, data, plots, and the full LaTeX source for the paper:
+
+> **Shock and No Shift: Impact of the Expulsion Initiative on Foreign Crime Rates in Switzerland**  
+> _The findings are data-driven and do not reflect any normative stance._
+
+On October 1<sup>st</sup>, 2016, Switzerland’s “Pour le renvoi des étrangers criminels” initiative (expulsion of foreign criminals) took effect. Using canton-level data from 2010–2023, we implement a Difference-in-Differences (DiD) framework comparing violent‐crime rates among foreign residents vs. Swiss nationals. We find no statistically significant effect of the expulsion law on foreign‐resident violent crime.
+
+Key contributions:
+
+- First empirical evaluation of Switzerland’s 2016 expulsion law.  
+- Panel data (26 cantons × 2 residency groups × 14 years = 728 cells).  
+- Robustness checks: parallel‐trend tests, event-study, alternative transformations (Box–Cox, log, linear), placebo reforms, canton heterogeneity, wild-bootstrap inference.  
+
+---
+
+## Repository Structure
+
+Below is a high-level view of the folder structure. Each main folder and its contents are described in detail.
+
+```text
+├── data
+│   ├── raw
+│   │   ├── crimes_subject_to_law_raw.xlsx
+│   │   ├── crimes_subject_to_law_raw_by_…xlsx
+│   │   ├── population_raw.xlsx
+│   │   └── population_raw_by_canton.xlsx
+│   └── processed
+│       ├── crimes_subject_to_law_cleaned.csv
+│       └── crimes_subject_to_law_cleaned_by_canton.csv
+├── plots
+│   ├── BoxCoxProfile.png
+│   ├── BoxCoxProfile_with_CI.png
+│   ├── crime_rate_transformations.png
+│   ├── did_graph.png
+│   ├── did_graph_boxcox.png
+│   ├── did_graph_linlin.png
+│   ├── did_graph_loglin.png
+│   ├── foreigner_year_interaction.png
+│   ├── foreigner_year_interaction_linear.png
+│   ├── pre_2017_trend_linlin.png
+│   ├── pre_2017_trend_loglin.png
+│   ├── pre_2017_trend_loglin.png
+│   └── keepgit  ← (empty placeholder to ensure Git tracks this folder)
+├── script
+│   ├── 01_data_cleaning.ipynb
+│   ├── 02_parallel_trends_test_comparison.ipynb
+│   ├── 02_parallel_trends_test_comparison_alt.ipynb
+│   ├── 03_did_BC_optimal.ipynb
+│   ├── 03_did_linear.ipynb
+│   ├── 03_did_log.ipynb
+│   └── README.md  ← (this file)
+├── main.tex  ← LaTeX source for the paper
+└── references.bib  ← BibLaTeX bibliography file
