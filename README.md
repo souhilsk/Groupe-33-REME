@@ -6,29 +6,6 @@
 
 ---
 
-## Table of Contents
-
-1. [Project Overview](#project-overview)  
-2. [Repository Structure](#repository-structure)  
-3. [Data](#data)  
-   - [Raw Data](#raw-data)  
-   - [Processed Data](#processed-data)  
-4. [Scripts & Notebooks](#scripts--notebooks)  
-   - [01_data_cleaning.ipynb](#01_data_cleaningipynb)  
-   - [02_parallel_trends_test_comparison.ipynb](#02_parallel_trends_test_comparisonipynb)  
-   - [02_parallel_trends_test_comparison_alt.ipynb](#02_parallel_trends_test_comparison_altipynb)  
-   - [03_did_BC_optimal.ipynb](#03_did_bc_optimalipynb)  
-   - [03_did_linear.ipynb](#03_did_linearipynb)  
-   - [03_did_log.ipynb](#03_did_logipynb)  
-5. [Plots](#plots)  
-6. [Paper (LaTeX)](#paper-latex)  
-7. [How to Reproduce](#how-to-reproduce)  
-   - [Environment & Dependencies](#environment--dependencies)  
-   - [Step-by-Step Instructions](#step-by-step-instructions)  
-8. [Citation](#citation)  
-
----
-
 ## Project Overview
 
 This repository contains all code, data, plots, and the full LaTeX source for the paper:
