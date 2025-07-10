@@ -25,7 +25,7 @@ Key contributions:
 
 ## Repository Structure
 
-Below is a high-level view of the folder structure. Each main folder and its contents are described in detail.
+Below is a view of the folder structure.
 
 ```text
 ├── data
@@ -58,6 +58,5 @@ Below is a high-level view of the folder structure. Each main folder and its con
 │   ├── 03_did_BC_optimal.ipynb
 │   ├── 03_did_linear.ipynb
 │   ├── 03_did_log.ipynb
-│   └── README.md  ← (this file)
 ├── main.tex  ← LaTeX source for the paper
 └── references.bib  ← BibLaTeX bibliography file
