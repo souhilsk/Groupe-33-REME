@@ -58,5 +58,4 @@ Below is a view of the folder structure.
 │   ├── 03_did_BC_optimal.ipynb
 │   ├── 03_did_linear.ipynb
 │   ├── 03_did_log.ipynb
-├── main.tex  ← LaTeX source for the paper
 └── references.bib  ← BibLaTeX bibliography file
